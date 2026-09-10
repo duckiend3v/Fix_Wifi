@@ -22,7 +22,6 @@ if %errorlevel% neq 0 (
         echo [LOI] Khong tim thay Git tren may tinh cua ban!
         echo.
         echo Vui long tai va cai dat Git tai: https://git-scm.com/
-        echo (Sau khi cai dat Git xong, chay lai file nay la duoc)
         echo.
         pause
         exit /b 1
@@ -53,25 +52,25 @@ if not exist ".git" (
 )
 git branch -M main
 
-REM Tu dong thiet lap user.name va user.email cho Git neu may chua cai dat
+REM Tu dong thiet lap user.name va user.email cho Git
 echo [*] Thiet lap thong tin tac gia Git (duckiend3v)...
 git config --global user.name "duckiend3v" 2>nul
 git config --global user.email "duckiend3v@users.noreply.github.com" 2>nul
 git config user.name "duckiend3v"
 git config user.email "duckiend3v@users.noreply.github.com"
 
-REM Cau hinh remote origin
+REM Cau hinh remote origin dung voi tai khoan duckiend3v
 git remote remove origin >nul 2>&1
-git remote add origin https://github.com/%REPO%.git
+git remote add origin https://duckiend3v@github.com/%REPO%.git
 
 echo [*] Dang them file vao Git...
 git add .
 
 echo [*] Dang tao commit...
-git commit -m "Khoi tao Fix Wifi v1.2.0 (Clear College Proxy va Auto-Update)"
+git commit -m "Khoi tao Fix Wifi v1.2.0 (Clear College Proxy va Auto-Update)" >nul 2>&1
 
 echo.
-echo [*] Dang day code len GitHub (git push -u origin main)...
+echo [*] Dang day code len GitHub voi tai khoan duckiend3v...
 git push -u origin main
 
 echo.
@@ -89,9 +88,10 @@ if %errorlevel% equ 0 (
     echo ========================================================
 ) else (
     echo ========================================================
-    echo [!] PUSH THAT BAI HOAC DANG CHO DANG NHAP GITHUB:
-    echo  - Neu co cua so trinh duyet bat len, hay bam Sign in to GitHub.
-    echo  - Hay chac chan ban da tao repo Fix_Wifi tren https://github.com/new
+    echo [!] PUSH THAT BAI HOAC BI XUNG DOT TAI KHOAN:
+    echo  - Neu bi loi tai khoan DoMinhQuan2002:
+    echo    Hay chay file: "doi_tai_khoan_github.bat" de xoa dang nhap cu.
+    echo  - Sau do dang nhap vao: duckiend3v tren trinh duyet khi duoc hoi.
     echo ========================================================
 )
 

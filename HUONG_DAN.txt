@@ -6,11 +6,12 @@ Thư mục này bao gồm:
 1. chay_tool_fix_wifi.bat : [KHUYÊN DÙNG] Nhấp đúp chuột để mở giao diện trực quan.
 2. fix_wifi_tool.py       : Mã nguồn giao diện chính (chạy qua Python Tkinter).
 3. push_len_github.bat    : [GITHUB] Tự động khởi tạo Git và đẩy toàn bộ dự án lên GitHub.
-4. cap_nhat_tool.bat      : Script cập nhật tool tự động qua GitHub bằng dòng lệnh.
-5. dong_goi_tool.bat      : [ĐÓNG GÓI] Tự động nén Fix_Wifi.zip và build file .EXE độc lập.
-6. fix_wifi_multi.bat     : Chạy sửa lỗi nhanh qua cửa sổ dòng lệnh CMD.
-7. updater_config.json    : File cấu hình địa chỉ kho lưu trữ GitHub Repo.
-8. wifi_loi.bat           : File gốc ban đầu của bạn.
+4. doi_tai_khoan_github.bat: Xóa thông tin đăng nhập GitHub cũ để đổi sang tài khoản mới.
+5. cap_nhat_tool.bat      : Script cập nhật tool tự động qua GitHub bằng dòng lệnh.
+6. dong_goi_tool.bat      : [ĐÓNG GÓI] Tự động nén Fix_Wifi.zip và build file .EXE độc lập.
+7. fix_wifi_multi.bat     : Chạy sửa lỗi nhanh qua cửa sổ dòng lệnh CMD.
+8. updater_config.json    : File cấu hình địa chỉ kho lưu trữ GitHub Repo.
+9. wifi_loi.bat           : File gốc ban đầu của bạn.
 
 ----------------------------------------------------------------------
 CÁC BƯỚC TỰ ĐỘNG XỬ LÝ KHI GỠ LỖI:
