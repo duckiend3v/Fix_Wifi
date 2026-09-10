@@ -11,7 +11,6 @@ Thư mục này bao gồm:
 6. dong_goi_tool.bat      : [ĐÓNG GÓI] Tự động nén Fix_Wifi.zip và build file .EXE độc lập.
 7. fix_wifi_multi.bat     : Chạy sửa lỗi nhanh qua cửa sổ dòng lệnh CMD.
 8. updater_config.json    : File cấu hình địa chỉ kho lưu trữ GitHub Repo.
-9. wifi_loi.bat           : File gốc ban đầu của bạn.
 
 ----------------------------------------------------------------------
 CÁC BƯỚC TỰ ĐỘNG XỬ LÝ KHI GỠ LỖI:

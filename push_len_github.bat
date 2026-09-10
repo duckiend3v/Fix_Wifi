@@ -9,7 +9,12 @@ echo       TIEN HANH DAY DU AN LEN GITHUB (FIRST PUSH)
 echo ========================================================
 echo.
 
-REM 1. Kiem tra Git trong he thong hoac cac thu muc cai dat mac dinh
+REM 1. Don dep file thua trong thu muc
+echo [*] Dang don dep cac file rac va file thua...
+del /f /q wifi_loi.bat >nul 2>&1
+del /f /q Fix_Wifi.zip >nul 2>&1
+
+REM 2. Kiem tra Git trong he thong hoac cac thu muc cai dat mac dinh
 where git >nul 2>&1
 if %errorlevel% neq 0 (
     if exist "C:\Program Files\Git\cmd\git.exe" (
@@ -22,6 +27,7 @@ if %errorlevel% neq 0 (
         echo [LOI] Khong tim thay Git tren may tinh cua ban!
         echo.
         echo Vui long tai va cai dat Git tai: https://git-scm.com/
+        echo (Sau khi cai dat Git xong, chay lai file nay la duoc)
         echo.
         pause
         exit /b 1
@@ -55,19 +61,20 @@ git branch -M main
 REM Tu dong thiet lap user.name va user.email cho Git
 echo [*] Thiet lap thong tin tac gia Git (duckiend3v)...
 git config --global user.name "duckiend3v" 2>nul
-git config --global user.email "duckiend3v@users.noreply.github.com" 2>nul
+git config --global user.email "duckien2002tb@gmail.com" 2>nul
 git config user.name "duckiend3v"
-git config user.email "duckiend3v@users.noreply.github.com"
+git config user.email "duckien2002tb@gmail.com"
 
 REM Cau hinh remote origin dung voi tai khoan duckiend3v
 git remote remove origin >nul 2>&1
 git remote add origin https://duckiend3v@github.com/%REPO%.git
 
-echo [*] Dang them file vao Git...
+echo [*] Lam moi chi muc Git theo .gitignore moi...
+git rm -r --cached . >nul 2>&1
 git add .
 
 echo [*] Dang tao commit...
-git commit -m "Khoi tao Fix Wifi v1.2.0 (Clear College Proxy va Auto-Update)" >nul 2>&1
+git commit -m "Khoi tao Fix Wifi v1.2.0 (Toi uu thu muc va .gitignore)" >nul 2>&1
 
 echo.
 echo [*] Dang day code len GitHub voi tai khoan duckiend3v...

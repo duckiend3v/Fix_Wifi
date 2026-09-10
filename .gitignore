@@ -3,15 +3,24 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Binary executables & archives (khong day len git, upload vao GitHub Releases)
+*.exe
+*.zip
+*.tar.gz
+*.rar
+
 # PyInstaller build artifacts
 build/
 dist/
 *.spec
 
-# Updater temporary files
+# Updater temporary files & backups
 update_temp_*
 apply_update.bat
 *.bak
+
+# Local scripts
+doi_tai_khoan_github.bat
 
 # OS generated files
 Thumbs.db
@@ -19,3 +28,7 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 .DS_Store
+
+# IDE / Editor configuration
+.vscode/
+.idea/
