@@ -31,7 +31,7 @@ except Exception as e:
     sys.exit(1)
 
 
-APP_VERSION = "v1.2.0"
+APP_VERSION = "v1.2.1"
 DEFAULT_GITHUB_REPO = "duckiend3v/Fix_Wifi"
 
 
@@ -40,6 +40,17 @@ def get_app_dir():
     if getattr(sys, 'frozen', False):
         return os.path.dirname(os.path.abspath(sys.executable))
     return os.path.dirname(os.path.abspath(__file__))
+
+
+def get_resource_path(relative_path):
+    """Trả về đường dẫn tài nguyên (hỗ trợ cả chạy script .py và khi giải nén trong .exe PyInstaller)"""
+    base_path = getattr(sys, '_MEIPASS', None)
+    if base_path:
+        cand = os.path.join(base_path, relative_path)
+        if os.path.exists(cand):
+            return cand
+    cand = os.path.join(get_app_dir(), relative_path)
+    return cand
 
 
 def load_github_repo():
@@ -112,6 +123,9 @@ class WifiFixerApp:
         self.root.geometry("880x740")
         self.root.minsize(800, 640)
         
+        # Thiết lập Icon cho ứng dụng
+        self._setup_app_icon()
+        
         # Đường dẫn adb
         self.adb_bin = find_adb_executable()
 
@@ -128,6 +142,32 @@ class WifiFixerApp:
         # Tự động kiểm tra cập nhật ngầm sau 2 giây
         self.root.after(2000, lambda: self.check_github_update(silent=True))
         
+    def _setup_app_icon(self):
+        """Thiết lập icon cửa sổ và thanh tác vụ Windows"""
+        ico_file = get_resource_path("icon.ico")
+        png_file = get_resource_path("icon.png")
+        if not os.path.exists(ico_file) and not getattr(sys, 'frozen', False):
+            try:
+                import tao_icon
+                tao_icon.make_icons()
+                ico_file = get_resource_path("icon.ico")
+                png_file = get_resource_path("icon.png")
+            except Exception:
+                pass
+                
+        if os.path.exists(ico_file):
+            try:
+                self.root.iconbitmap(ico_file)
+            except Exception:
+                pass
+                
+        if os.path.exists(png_file):
+            try:
+                self._app_icon = tk.PhotoImage(file=png_file)
+                self.root.iconphoto(True, self._app_icon)
+            except Exception:
+                pass
+
     def _setup_styles(self):
         self.style = ttk.Style()
         try:
@@ -153,9 +193,25 @@ class WifiFixerApp:
         header_left = ttk.Frame(header_frame)
         header_left.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-        title_lbl = ttk.Label(header_left, text=f"FIX WIFI  [{APP_VERSION}]", style="Header.TLabel")
+        # Hiển thị Logo cạnh tiêu đề
+        logo_path = get_resource_path("icon_48.png")
+        if not os.path.exists(logo_path):
+            logo_path = get_resource_path("icon.png")
+            
+        if os.path.exists(logo_path):
+            try:
+                self._logo_img = tk.PhotoImage(file=logo_path)
+                logo_lbl = ttk.Label(header_left, image=self._logo_img)
+                logo_lbl.pack(side=tk.LEFT, padx=(0, 10))
+            except Exception:
+                pass
+
+        header_text_frame = ttk.Frame(header_left)
+        header_text_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        title_lbl = ttk.Label(header_text_frame, text=f"FIX WIFI  [{APP_VERSION}]", style="Header.TLabel")
         title_lbl.pack(anchor=tk.W)
-        sub_lbl = ttk.Label(header_left, text="Gỡ lỗi kẹt Proxy, clear app College Proxy, không bắt được Wi-Fi, tự động kết nối lại Wi-Fi mới qua app ADBJoinWiFi.", style="SubHeader.TLabel")
+        sub_lbl = ttk.Label(header_text_frame, text="Gỡ lỗi kẹt Proxy, clear app College Proxy, không bắt được Wi-Fi, tự động kết nối lại Wi-Fi mới qua app ADBJoinWiFi.", style="SubHeader.TLabel")
         sub_lbl.pack(anchor=tk.W)
 
         # Cụm nút Cập nhật GitHub góc phải
@@ -904,12 +960,12 @@ class WifiFixerApp:
 
                 bat_content = f"""@echo off
 chcp 65001 >nul
-title Dang cap nhat Tool Fix Wi-Fi...
+title Dang cap nhat Fix Wifi...
 echo ========================================================
 echo   DANG TIEN HANH NANG CAP PHIEN BAN MOI
 echo   Vui long cho trong giay lat...
 echo ========================================================
-timeout /t 2 /nobreak >nul
+timeout /t 1 /nobreak >nul
 
 :WAIT_LOOP
 taskkill /F /PID {pid} >nul 2>&1
@@ -922,13 +978,27 @@ if exist "{temp_file}" (
 )
 
 echo [OK] Nang cap thanh cong! Dang khoi dong lai tool...
+set _MEIPASS2=
+set _MEIPASS=
+set PYI_PARENT_PID=
+timeout /t 1 /nobreak >nul
 start "" "{curr_exe}"
 del "%~f0"
 """
                 with open(bat_path, "w", encoding="utf-8") as bf:
                     bf.write(bat_content)
 
-                subprocess.Popen(["cmd.exe", "/c", bat_path], cwd=app_dir, creationflags=subprocess.CREATE_NEW_CONSOLE if os.name == 'nt' else 0)
+                clean_env = os.environ.copy()
+                clean_env.pop("_MEIPASS2", None)
+                clean_env.pop("_MEIPASS", None)
+                clean_env.pop("PYI_PARENT_PID", None)
+
+                subprocess.Popen(
+                    ["cmd.exe", "/c", bat_path], 
+                    cwd=app_dir, 
+                    env=clean_env, 
+                    creationflags=subprocess.CREATE_NEW_CONSOLE if os.name == 'nt' else 0
+                )
                 self.root.destroy()
                 sys.exit(0)
 

@@ -25,6 +25,8 @@ doi_tai_khoan_github.bat
 dong_goi.py
 dong_goi_tool.bat
 cap_nhat_tool.bat
+tao_icon.py
+tao_icon.bat
 
 # OS generated files
 Thumbs.db

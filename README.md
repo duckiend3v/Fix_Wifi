@@ -1,6 +1,12 @@
-# Fix Wifi - Android Phone Farm
+<div align="center">
 
-Công cụ tự động gỡ lỗi mạng Wi-Fi, kẹt Proxy, xóa dữ liệu app College Proxy và tự động kết nối Wi-Fi mới cho dàn Android Phone Farm (hỗ trợ xử lý song song hàng chục đến hàng trăm máy).
+  <img src="icon.png" width="130" height="130" alt="Fix Wifi Logo" />
+
+  # Fix Wifi - Android Phone Farm
+  
+  <p><b>Công cụ tự động gỡ lỗi mạng Wi-Fi, kẹt Proxy, xóa app College Proxy & kết nối Wi-Fi hàng loạt cho Phone Farm</b></p>
+
+</div>
 
 ---
 
