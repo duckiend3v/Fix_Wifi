@@ -31,7 +31,7 @@ except Exception as e:
     sys.exit(1)
 
 
-APP_VERSION = "v1.2.1"
+APP_VERSION = "v1.2.2"
 DEFAULT_GITHUB_REPO = "duckiend3v/Fix_Wifi"
 
 
