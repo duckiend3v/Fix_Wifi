@@ -1,0 +1,48 @@
+======================================================================
+                         FIX WIFI (PHONE FARM)
+======================================================================
+
+Thư mục này bao gồm:
+1. chay_tool_fix_wifi.bat : [KHUYÊN DÙNG] Nhấp đúp chuột để mở giao diện trực quan.
+2. fix_wifi_tool.py       : Mã nguồn giao diện chính (chạy qua Python Tkinter).
+3. push_len_github.bat    : [GITHUB] Tự động khởi tạo Git và đẩy toàn bộ dự án lên GitHub.
+4. cap_nhat_tool.bat      : Script cập nhật tool tự động qua GitHub bằng dòng lệnh.
+5. dong_goi_tool.bat      : [ĐÓNG GÓI] Tự động nén Fix_Wifi.zip và build file .EXE độc lập.
+6. fix_wifi_multi.bat     : Chạy sửa lỗi nhanh qua cửa sổ dòng lệnh CMD.
+7. updater_config.json    : File cấu hình địa chỉ kho lưu trữ GitHub Repo.
+8. wifi_loi.bat           : File gốc ban đầu của bạn.
+
+----------------------------------------------------------------------
+CÁC BƯỚC TỰ ĐỘNG XỬ LÝ KHI GỠ LỖI:
+----------------------------------------------------------------------
+1. Xóa sạch HTTP Proxy hệ thống (settings put/delete http_proxy, host, port)
+2. Xóa dữ liệu và tắt app College Proxy (force-stop & pm clear com.cell47.College_Proxy)
+3. Quên toàn bộ cấu hình Wi-Fi đã lưu (forget-network 0..15)
+4. Tắt và ngắt kết nối app ADBJoinWiFi cũ
+5. Tắt Wi-Fi (svc wifi disable)
+6. Bật lại Wi-Fi mới (svc wifi enable)
+7. Tự động kết nối Wi-Fi mới theo định dạng user|pass qua ADBJoinWiFi!
+
+----------------------------------------------------------------------
+TÍNH NĂNG TỰ ĐỘNG CẬP NHẬT QUA GITHUB (AUTO-UPDATE):
+----------------------------------------------------------------------
+- Trên giao diện Tool có nút: [ 🔄 Kiểm tra Cập nhật ] (hoặc chạy ngầm tự kiểm tra).
+- Người dùng ở máy khác chỉ cần bấm nút này, tool sẽ tự kiểm tra GitHub, tải bản mới về và tự cài đặt khởi động lại mà không cần gửi file qua lại.
+- Nút [ ⚙ Repo ]: Dùng để xem hoặc sửa địa chỉ GitHub Repo (mặc định: duckiend3v/Fix_Wifi).
+
+----------------------------------------------------------------------
+HƯỚNG DẪN KHI BẠN RA PHIÊN BẢN MỚI (CHO MÁY CHỦ):
+----------------------------------------------------------------------
+1. Khi sửa code xong, chạy "dong_goi_tool.bat" để tạo "Fix_Wifi.exe" hoặc "Fix_Wifi.zip".
+2. Vào GitHub (https://github.com/duckiend3v/Fix_Wifi/releases) -> Bấm "Draft a new release".
+3. Nhập số phiên bản mới (ví dụ: v1.3.0).
+4. Kéo thả file "Fix_Wifi.exe" (hoặc "Fix_Wifi.zip") vào mục đính kèm rồi bấm "Publish release".
+5. Tất cả các máy khác chỉ cần mở tool và ấn "CẬP NHẬT NGAY" là xong!
+
+----------------------------------------------------------------------
+CÁCH ĐÓNG GÓI TOOL:
+----------------------------------------------------------------------
+- Bạn chỉ cần nhấp đúp vào file: "dong_goi_tool.bat"
+- Script sẽ tự động nén toàn bộ thành file: "Fix_Wifi.zip"
+- Đồng thời tự động build file chạy độc lập: "Fix_Wifi.exe"
+======================================================================
