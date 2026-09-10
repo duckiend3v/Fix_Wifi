@@ -19,8 +19,12 @@ update_temp_*
 apply_update.bat
 *.bak
 
-# Local scripts
+# Admin & Developer local tools (giu tren may tinh cua ban, khong day len GitHub)
+push_len_github.bat
 doi_tai_khoan_github.bat
+dong_goi.py
+dong_goi_tool.bat
+cap_nhat_tool.bat
 
 # OS generated files
 Thumbs.db
