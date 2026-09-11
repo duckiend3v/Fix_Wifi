@@ -31,7 +31,7 @@ except Exception as e:
     sys.exit(1)
 
 
-APP_VERSION = "v1.2.4b"
+APP_VERSION = "v1.2.4c"
 DEFAULT_GITHUB_REPO = "duckiend3v/Fix_Wifi"
 
 
@@ -79,16 +79,30 @@ def save_github_repo(repo):
 
 
 def is_newer_version(latest_tag, current_ver):
-    """So sánh 2 version xem latest_tag có mới hơn current_ver không (ví dụ: v1.2.0 > v1.1.0)"""
+    """So sánh 2 version xem latest_tag có mới hơn current_ver không (hỗ trợ cả hậu tố ví dụ: v1.2.4 < v1.2.4b < v1.2.5)"""
     try:
-        nums_latest = [int(x) for x in re.findall(r"\d+", latest_tag)]
-        nums_current = [int(x) for x in re.findall(r"\d+", current_ver)]
-        max_len = max(len(nums_latest), len(nums_current))
-        nums_latest.extend([0] * (max_len - len(nums_latest)))
-        nums_current.extend([0] * (max_len - len(nums_current)))
-        return nums_latest > nums_current
+        clean_latest = latest_tag.strip().lstrip("vV")
+        clean_current = current_ver.strip().lstrip("vV")
+        if clean_latest == clean_current:
+            return False
+
+        # Trích xuất các cặp (số, chữ) ví dụ: "1.2.4b" -> [(1, ''), (2, ''), (4, 'b')]
+        parsed_latest = [(int(num), letter.lower()) for num, letter in re.findall(r"(\d+)([a-zA-Z]*)", clean_latest)]
+        parsed_current = [(int(num), letter.lower()) for num, letter in re.findall(r"(\d+)([a-zA-Z]*)", clean_current)]
+
+        if not parsed_latest or not parsed_current:
+            return clean_latest != clean_current
+
+        max_len = max(len(parsed_latest), len(parsed_current))
+        parsed_latest.extend([(0, "")] * (max_len - len(parsed_latest)))
+        parsed_current.extend([(0, "")] * (max_len - len(parsed_current)))
+
+        if parsed_latest != parsed_current:
+            return parsed_latest > parsed_current
+
+        return clean_latest != clean_current
     except Exception:
-        return latest_tag != current_ver
+        return latest_tag.strip().lower() != current_ver.strip().lower()
 
 
 def find_adb_executable():
