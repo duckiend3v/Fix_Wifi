@@ -31,7 +31,7 @@ except Exception as e:
     sys.exit(1)
 
 
-APP_VERSION = "v1.2.3"
+APP_VERSION = "v1.2.4"
 DEFAULT_GITHUB_REPO = "duckiend3v/Fix_Wifi"
 
 
@@ -116,6 +116,187 @@ def find_adb_executable():
     return "adb"
 
 
+THEMES = {
+    "Tokyo Night": {
+        "name": "Tokyo Night",
+        "bg": "#1a1b26",
+        "card_bg": "#24283b",
+        "card_border": "#414868",
+        "header_bg": "#1f2335",
+        "fg": "#c0caf5",
+        "fg_muted": "#7aa2f7",
+        "accent": "#7dcfff",
+        "badge_bg": "#41a6b5",
+        "badge_fg": "#15161e",
+        "input_bg": "#16161e",
+        "input_fg": "#7dcfff",
+        "btn_primary_bg": "#73daca",
+        "btn_primary_hover": "#41a6b5",
+        "btn_primary_fg": "#15161e",
+        "btn_secondary_bg": "#292e42",
+        "btn_secondary_hover": "#3b4261",
+        "btn_secondary_fg": "#c0caf5",
+        "btn_action_bg": "#bb9af7",
+        "btn_action_hover": "#7aa2f7",
+        "btn_action_fg": "#15161e",
+        "btn_stop_bg": "#292e42",
+        "btn_stop_active": "#f7768e",
+        "btn_stop_fg": "#9aa5ce",
+        "log_bg": "#16161e",
+        "log_fg": "#c0caf5",
+        "log_info": "#7dcfff",
+        "log_success": "#73daca",
+        "log_warning": "#e0af68",
+        "log_error": "#f7768e",
+        "log_cmd": "#565f89",
+        "status_ok": "#73daca",
+        "status_warn": "#e0af68",
+        "status_err": "#f7768e",
+        "pb_bg": "#73daca",
+        "pb_trough": "#16161e"
+    },
+    "Cyberpunk 2077": {
+        "name": "Cyberpunk 2077",
+        "bg": "#0c0d12",
+        "card_bg": "#141721",
+        "card_border": "#00f0ff",
+        "header_bg": "#1a1e2b",
+        "fg": "#fcee0a",
+        "fg_muted": "#00f0ff",
+        "accent": "#fcee0a",
+        "badge_bg": "#fcee0a",
+        "badge_fg": "#000000",
+        "input_bg": "#07080b",
+        "input_fg": "#00f0ff",
+        "btn_primary_bg": "#fcee0a",
+        "btn_primary_hover": "#ffe600",
+        "btn_primary_fg": "#000000",
+        "btn_secondary_bg": "#1e2333",
+        "btn_secondary_hover": "#2a3147",
+        "btn_secondary_fg": "#00f0ff",
+        "btn_action_bg": "#00f0ff",
+        "btn_action_hover": "#38f5ff",
+        "btn_action_fg": "#000000",
+        "btn_stop_bg": "#1e2333",
+        "btn_stop_active": "#ff003c",
+        "btn_stop_fg": "#ff003c",
+        "log_bg": "#07080b",
+        "log_fg": "#00f0ff",
+        "log_info": "#00f0ff",
+        "log_success": "#fcee0a",
+        "log_warning": "#ff8800",
+        "log_error": "#ff003c",
+        "log_cmd": "#71798e",
+        "status_ok": "#fcee0a",
+        "status_warn": "#ff8800",
+        "status_err": "#ff003c",
+        "pb_bg": "#fcee0a",
+        "pb_trough": "#07080b"
+    },
+    "Neon City": {
+        "name": "Neon City",
+        "bg": "#0d0417",
+        "card_bg": "#19082e",
+        "card_border": "#ff2a85",
+        "header_bg": "#220b3f",
+        "fg": "#f5e6ff",
+        "fg_muted": "#05d9e8",
+        "accent": "#ff2a85",
+        "badge_bg": "#b026ff",
+        "badge_fg": "#ffffff",
+        "input_bg": "#090210",
+        "input_fg": "#05d9e8",
+        "btn_primary_bg": "#00ff9f",
+        "btn_primary_hover": "#38ffb5",
+        "btn_primary_fg": "#0d0417",
+        "btn_secondary_bg": "#2c0e52",
+        "btn_secondary_hover": "#3d1370",
+        "btn_secondary_fg": "#05d9e8",
+        "btn_action_bg": "#ff2a85",
+        "btn_action_hover": "#ff4d9d",
+        "btn_action_fg": "#ffffff",
+        "btn_stop_bg": "#2c0e52",
+        "btn_stop_active": "#ff2a85",
+        "btn_stop_fg": "#ff2a85",
+        "log_bg": "#090210",
+        "log_fg": "#f5e6ff",
+        "log_info": "#05d9e8",
+        "log_success": "#00ff9f",
+        "log_warning": "#ffd300",
+        "log_error": "#ff2a85",
+        "log_cmd": "#7b5e99",
+        "status_ok": "#00ff9f",
+        "status_warn": "#ffd300",
+        "status_err": "#ff2a85",
+        "pb_bg": "#ff2a85",
+        "pb_trough": "#090210"
+    },
+    "Dark Slate": {
+        "name": "Dark Slate",
+        "bg": "#0d1117",
+        "card_bg": "#161b22",
+        "card_border": "#30363d",
+        "header_bg": "#161b22",
+        "fg": "#f0f6fc",
+        "fg_muted": "#8b949e",
+        "accent": "#58a6ff",
+        "badge_bg": "#238636",
+        "badge_fg": "#ffffff",
+        "input_bg": "#090d13",
+        "input_fg": "#58a6ff",
+        "btn_primary_bg": "#238636",
+        "btn_primary_hover": "#2ea043",
+        "btn_primary_fg": "#ffffff",
+        "btn_secondary_bg": "#21262d",
+        "btn_secondary_hover": "#30363d",
+        "btn_secondary_fg": "#c9d1d9",
+        "btn_action_bg": "#1f6feb",
+        "btn_action_hover": "#388bfd",
+        "btn_action_fg": "#ffffff",
+        "btn_stop_bg": "#21262d",
+        "btn_stop_active": "#da3633",
+        "btn_stop_fg": "#8b949e",
+        "log_bg": "#070a11",
+        "log_fg": "#e6edf3",
+        "log_info": "#58a6ff",
+        "log_success": "#3fb950",
+        "log_warning": "#d29922",
+        "log_error": "#f85149",
+        "log_cmd": "#8b949e",
+        "status_ok": "#3fb950",
+        "status_warn": "#d29922",
+        "status_err": "#f85149",
+        "pb_bg": "#238636",
+        "pb_trough": "#0d1117"
+    }
+}
+
+
+def load_theme_preference():
+    """Đọc cấu hình giao diện đã lưu (Tokyo Night, Cyberpunk 2077, Neon City, Dark Slate)"""
+    cfg_file = os.path.join(get_app_dir(), "theme_config.json")
+    if os.path.exists(cfg_file):
+        try:
+            with open(cfg_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                th = data.get("theme", "")
+                if th in THEMES:
+                    return th
+        except Exception:
+            pass
+    return "Tokyo Night"
+
+
+def save_theme_preference(theme_name):
+    """Lưu cấu hình giao diện người dùng chọn vào theme_config.json"""
+    cfg_file = os.path.join(get_app_dir(), "theme_config.json")
+    try:
+        with open(cfg_file, "w", encoding="utf-8") as f:
+            json.dump({"theme": theme_name}, f, indent=2)
+    except Exception:
+        pass
+
+
 def make_hover_button(btn, normal_bg, hover_bg, normal_fg="#ffffff", hover_fg="#ffffff"):
     """Tạo hiệu ứng hover đổi màu mượt mà cho nút bấm Tkinter"""
     def _on_enter(e):
@@ -134,16 +315,33 @@ def make_hover_button(btn, normal_bg, hover_bg, normal_fg="#ffffff", hover_fg="#
 
     btn.bind("<Enter>", _on_enter)
     btn.bind("<Leave>", _on_leave)
+    btn._hover_cfg = (normal_bg, hover_bg, normal_fg, hover_fg)
 
 
 class DarkDialog:
-    """Hệ thống hộp thoại thông báo Dark Slate Theme hiện đại, thay thế messagebox Windows cổ điển"""
+    """Hệ thống hộp thoại thông báo phong cách Cyber / Dark hiện đại, thay thế messagebox Windows cổ điển"""
     
     @classmethod
     def show(cls, parent, title, message, dialog_type="info", input_default=""):
         dlg = tk.Toplevel(parent) if parent else tk.Toplevel()
         dlg.title(title)
-        dlg.configure(bg="#0d1117")
+
+        # Lấy màu theo theme đang kích hoạt nếu có
+        curr_theme = None
+        if parent:
+            if hasattr(parent, "curr_theme"):
+                curr_theme = parent.curr_theme
+            elif hasattr(parent, "master") and hasattr(parent.master, "curr_theme"):
+                curr_theme = parent.master.curr_theme
+
+        win_bg = curr_theme["bg"] if curr_theme else "#1a1b26"
+        card_bg = curr_theme["card_bg"] if curr_theme else "#24283b"
+        text_fg = curr_theme["fg"] if curr_theme else "#c0caf5"
+        accent_color = curr_theme["accent"] if curr_theme else "#7dcfff"
+        input_bg = curr_theme["input_bg"] if curr_theme else "#16161e"
+        input_fg = curr_theme["input_fg"] if curr_theme else "#7dcfff"
+
+        dlg.configure(bg=win_bg)
         dlg.resizable(False, False)
         if parent:
             dlg.transient(parent)
@@ -160,56 +358,56 @@ class DarkDialog:
         type_configs = {
             "success": {
                 "tag": "✓ THÀNH CÔNG",
-                "tag_bg": "#238636",
-                "tag_fg": "#ffffff",
-                "border": "#238636",
-                "title_fg": "#3fb950"
+                "tag_bg": "#238636" if not curr_theme else curr_theme["status_ok"],
+                "tag_fg": "#ffffff" if not curr_theme else curr_theme["btn_primary_fg"],
+                "border": "#238636" if not curr_theme else curr_theme["status_ok"],
+                "title_fg": "#3fb950" if not curr_theme else curr_theme["status_ok"]
             },
             "info": {
                 "tag": "ℹ THÔNG BÁO",
-                "tag_bg": "#1f6feb",
-                "tag_fg": "#ffffff",
-                "border": "#1f6feb",
-                "title_fg": "#58a6ff"
+                "tag_bg": accent_color,
+                "tag_fg": "#ffffff" if not curr_theme else curr_theme["btn_primary_fg"],
+                "border": accent_color,
+                "title_fg": accent_color
             },
             "warning": {
                 "tag": "⚠ CẢNH BÁO",
-                "tag_bg": "#d29922",
-                "tag_fg": "#0d1117",
-                "border": "#d29922",
-                "title_fg": "#d29922"
+                "tag_bg": "#e0af68" if not curr_theme else curr_theme["status_warn"],
+                "tag_fg": "#1a1b26",
+                "border": "#e0af68" if not curr_theme else curr_theme["status_warn"],
+                "title_fg": "#e0af68" if not curr_theme else curr_theme["status_warn"]
             },
             "error": {
                 "tag": "✖ LỖI",
-                "tag_bg": "#da3633",
+                "tag_bg": "#f7768e" if not curr_theme else curr_theme["status_err"],
                 "tag_fg": "#ffffff",
-                "border": "#da3633",
-                "title_fg": "#f85149"
+                "border": "#f7768e" if not curr_theme else curr_theme["status_err"],
+                "title_fg": "#f7768e" if not curr_theme else curr_theme["status_err"]
             },
             "confirm": {
                 "tag": "? XÁC NHẬN",
-                "tag_bg": "#8957e5",
-                "tag_fg": "#ffffff",
-                "border": "#8957e5",
-                "title_fg": "#bc8cff"
+                "tag_bg": accent_color,
+                "tag_fg": "#ffffff" if not curr_theme else curr_theme["btn_primary_fg"],
+                "border": accent_color,
+                "title_fg": accent_color
             },
             "input": {
                 "tag": "⚙ CẤU HÌNH",
-                "tag_bg": "#1f6feb",
-                "tag_fg": "#ffffff",
-                "border": "#1f6feb",
-                "title_fg": "#58a6ff"
+                "tag_bg": accent_color,
+                "tag_fg": "#ffffff" if not curr_theme else curr_theme["btn_primary_fg"],
+                "border": accent_color,
+                "title_fg": accent_color
             }
         }
         cfg = type_configs.get(dialog_type, type_configs["info"])
         res = {"value": None}
 
         # Khung viền sắc nét phong cách Cyber Dark
-        frame = tk.Frame(dlg, bg="#161b22", highlightbackground=cfg["border"], highlightthickness=1, padx=18, pady=16)
+        frame = tk.Frame(dlg, bg=card_bg, highlightbackground=cfg["border"], highlightthickness=1, padx=18, pady=16)
         frame.pack(fill=tk.BOTH, expand=True, padx=8, pady=8)
 
         # Header: Tag badge + Title
-        hdr = tk.Frame(frame, bg="#161b22")
+        hdr = tk.Frame(frame, bg=card_bg)
         hdr.pack(fill=tk.X, pady=(0, 10))
 
         badge = tk.Label(
@@ -228,20 +426,20 @@ class DarkDialog:
             text=title, 
             font=("Segoe UI", 11, "bold"), 
             fg=cfg["title_fg"], 
-            bg="#161b22"
+            bg=card_bg
         )
         title_lbl.pack(side=tk.LEFT, anchor=tk.W)
 
         # Body: Message text
-        msg_frame = tk.Frame(frame, bg="#161b22")
+        msg_frame = tk.Frame(frame, bg=card_bg)
         msg_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 14))
 
         msg_lbl = tk.Label(
             msg_frame, 
             text=message, 
             font=("Segoe UI", 10), 
-            fg="#e6edf3", 
-            bg="#161b22", 
+            fg=text_fg, 
+            bg=card_bg, 
             justify=tk.LEFT, 
             wraplength=440
         )
@@ -249,14 +447,14 @@ class DarkDialog:
 
         ent = None
         if dialog_type == "input":
-            ent_frame = tk.Frame(frame, bg="#0d1117", highlightbackground="#30363d", highlightthickness=1, padx=6, pady=4)
+            ent_frame = tk.Frame(frame, bg=input_bg, highlightbackground=cfg["border"], highlightthickness=1, padx=6, pady=4)
             ent_frame.pack(fill=tk.X, pady=(0, 14))
             ent = tk.Entry(
                 ent_frame, 
                 font=("Consolas", 10), 
-                bg="#0d1117", 
-                fg="#58a6ff", 
-                insertbackground="#58a6ff", 
+                bg=input_bg, 
+                fg=input_fg, 
+                insertbackground=accent_color, 
                 relief=tk.FLAT
             )
             ent.insert(0, input_default)
@@ -265,7 +463,7 @@ class DarkDialog:
             ent.focus_set()
 
         # Footer: Action Buttons
-        btn_box = tk.Frame(frame, bg="#161b22")
+        btn_box = tk.Frame(frame, bg=card_bg)
         btn_box.pack(fill=tk.X)
 
         def on_ok(e=None):
@@ -286,40 +484,47 @@ class DarkDialog:
                 res["value"] = False
             dlg.destroy()
 
+        sec_bg = curr_theme["btn_secondary_bg"] if curr_theme else "#21262d"
+        sec_hover = curr_theme["btn_secondary_hover"] if curr_theme else "#30363d"
+        sec_fg = curr_theme["btn_secondary_fg"] if curr_theme else "#c9d1d9"
+        pri_bg = curr_theme["btn_primary_bg"] if curr_theme else "#238636"
+        pri_hover = curr_theme["btn_primary_hover"] if curr_theme else "#2ea043"
+        pri_fg = curr_theme["btn_primary_fg"] if curr_theme else "#ffffff"
+
         if dialog_type == "confirm":
             b_ok = tk.Button(
                 btn_box, text="✓ Đồng ý", font=("Segoe UI", 9, "bold"),
-                bg="#238636", fg="#ffffff", relief=tk.FLAT, padx=14, pady=5, cursor="hand2",
+                bg=pri_bg, fg=pri_fg, relief=tk.FLAT, padx=14, pady=5, cursor="hand2",
                 command=on_ok
             )
             b_ok.pack(side=tk.RIGHT, padx=(6, 0))
             b_cancel = tk.Button(
                 btn_box, text="✕ Hủy bỏ", font=("Segoe UI", 9),
-                bg="#21262d", fg="#c9d1d9", relief=tk.FLAT, padx=12, pady=5, cursor="hand2",
+                bg=sec_bg, fg=sec_fg, relief=tk.FLAT, padx=12, pady=5, cursor="hand2",
                 command=on_cancel
             )
             b_cancel.pack(side=tk.RIGHT)
-            make_hover_button(b_ok, "#238636", "#2ea043")
-            make_hover_button(b_cancel, "#21262d", "#30363d")
+            make_hover_button(b_ok, pri_bg, pri_hover, pri_fg, pri_fg)
+            make_hover_button(b_cancel, sec_bg, sec_hover, sec_fg, text_fg)
         elif dialog_type == "input":
             b_ok = tk.Button(
                 btn_box, text="💾 Lưu cấu hình", font=("Segoe UI", 9, "bold"),
-                bg="#238636", fg="#ffffff", relief=tk.FLAT, padx=14, pady=5, cursor="hand2",
+                bg=pri_bg, fg=pri_fg, relief=tk.FLAT, padx=14, pady=5, cursor="hand2",
                 command=on_ok
             )
             b_ok.pack(side=tk.RIGHT, padx=(6, 0))
             b_cancel = tk.Button(
                 btn_box, text="✕ Hủy bỏ", font=("Segoe UI", 9),
-                bg="#21262d", fg="#c9d1d9", relief=tk.FLAT, padx=12, pady=5, cursor="hand2",
+                bg=sec_bg, fg=sec_fg, relief=tk.FLAT, padx=12, pady=5, cursor="hand2",
                 command=on_cancel
             )
             b_cancel.pack(side=tk.RIGHT)
-            make_hover_button(b_ok, "#238636", "#2ea043")
-            make_hover_button(b_cancel, "#21262d", "#30363d")
+            make_hover_button(b_ok, pri_bg, pri_hover, pri_fg, pri_fg)
+            make_hover_button(b_cancel, sec_bg, sec_hover, sec_fg, text_fg)
         else:
-            btn_color = "#238636" if dialog_type == "success" else ("#da3633" if dialog_type == "error" else ("#d29922" if dialog_type == "warning" else "#1f6feb"))
-            btn_hover = "#2ea043" if dialog_type == "success" else ("#f85149" if dialog_type == "error" else ("#e3b341" if dialog_type == "warning" else "#388bfd"))
-            btn_fg = "#0d1117" if dialog_type == "warning" else "#ffffff"
+            btn_color = pri_bg if dialog_type == "success" else ("#f7768e" if dialog_type == "error" else ("#e0af68" if dialog_type == "warning" else accent_color))
+            btn_hover = pri_hover if dialog_type == "success" else ("#ff9e64" if dialog_type == "error" else ("#ffc777" if dialog_type == "warning" else pri_hover))
+            btn_fg = "#1a1b26" if dialog_type in ("warning", "success", "info") else "#ffffff"
             
             b_close = tk.Button(
                 btn_box, text="✓ Đã hiểu", font=("Segoe UI", 9, "bold"),
@@ -381,8 +586,8 @@ class WifiFixerApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Fix Wifi")
-        self.root.geometry("880x740")
-        self.root.minsize(800, 640)
+        self.root.geometry("920x760")
+        self.root.minsize(760, 620)
         
         # Thiết lập Icon cho ứng dụng
         self._setup_app_icon()
@@ -395,10 +600,19 @@ class WifiFixerApp:
         self.stop_requested = False
         self.executor = None
         
+        # Tải cấu hình Theme (Tokyo Night, Cyberpunk 2077, Neon City, Dark Slate)
+        self.curr_theme_name = load_theme_preference()
+        self.curr_theme = THEMES.get(self.curr_theme_name, THEMES["Tokyo Night"])
+        self.root.curr_theme = self.curr_theme
+        
         # Cấu hình giao diện
         self._setup_styles()
         self._build_ui()
+        self.apply_theme(self.curr_theme_name)
         self._check_adb_status()
+        
+        # Lắng nghe sự kiện co giãn cửa sổ để tự căn chỉnh responsive
+        self.root.bind("<Configure>", self._on_window_resize)
         
         # Tự động kiểm tra cập nhật ngầm sau 2 giây
         self.root.after(2000, lambda: self.check_github_update(silent=True))
@@ -429,43 +643,274 @@ class WifiFixerApp:
             except Exception:
                 pass
 
+    def _on_window_resize(self, event=None):
+        """Tự động điều chỉnh độ ngắt dòng khi người dùng thu nhỏ / phóng to cửa sổ tool"""
+        if event and event.widget == self.root:
+            if hasattr(self, "sub_lbl"):
+                cur_w = self.root.winfo_width()
+                wrap_w = max(260, cur_w - 420)
+                self.sub_lbl.config(wraplength=wrap_w)
+
+    def _on_theme_change(self, event=None):
+        """Xử lý khi người dùng chọn giao diện mới từ dropdown"""
+        selected = self.cb_theme.get().strip()
+        if selected in THEMES:
+            self.apply_theme(selected)
+            self.log(f"Đã chuyển sang phong cách giao diện: {selected}", "INFO")
+
+    def apply_theme(self, theme_name):
+        """Thay đổi toàn bộ màu sắc, hiệu ứng, widget trên toàn bộ ứng dụng sang theme mới"""
+        if theme_name not in THEMES:
+            theme_name = "Tokyo Night"
+        self.curr_theme_name = theme_name
+        self.curr_theme = THEMES[theme_name]
+        self.root.curr_theme = self.curr_theme
+        t = self.curr_theme
+        save_theme_preference(theme_name)
+
+        # 1. Cửa sổ và khung chứa chính
+        self.root.configure(bg=t["bg"])
+        if hasattr(self, "main_container"):
+            self.main_container.configure(bg=t["bg"])
+
+        # 2. Các Card
+        for card in getattr(self, "card_frames", []):
+            try:
+                card.configure(bg=t["card_bg"], highlightbackground=t["card_border"])
+            except Exception:
+                pass
+
+        for f in getattr(self, "inner_frames", []):
+            try:
+                f.configure(bg=t["card_bg"])
+            except Exception:
+                pass
+
+        if hasattr(self, "wifi_conn_frame"):
+            self.wifi_conn_frame.configure(bg=t["bg"], highlightbackground=t["card_border"])
+
+        # 3. Các Nhãn & Tiêu đề
+        if hasattr(self, "logo_lbl"):
+            self.logo_lbl.configure(bg=t["card_bg"])
+        if hasattr(self, "title_lbl"):
+            self.title_lbl.configure(bg=t["card_bg"], fg=t["accent"])
+        if hasattr(self, "ver_badge"):
+            self.ver_badge.configure(bg=t["badge_bg"], fg=t["badge_fg"])
+        if hasattr(self, "sub_lbl"):
+            self.sub_lbl.configure(bg=t["card_bg"], fg=t["fg_muted"])
+        if hasattr(self, "lbl_theme_icon"):
+            self.lbl_theme_icon.configure(bg=t["card_bg"], fg=t["accent"])
+        if hasattr(self, "lbl_uid_title"):
+            self.lbl_uid_title.configure(bg=t["card_bg"], fg=t["accent"])
+        if hasattr(self, "lbl_uid_count"):
+            self.lbl_uid_count.configure(bg=t["btn_secondary_bg"], fg=t["status_ok"])
+        if hasattr(self, "lbl_opt_title"):
+            self.lbl_opt_title.configure(bg=t["card_bg"], fg=t["accent"])
+        if hasattr(self, "lbl_wifi_hint"):
+            self.lbl_wifi_hint.configure(bg=t["bg"], fg=t["fg_muted"])
+        if hasattr(self, "lbl_threads"):
+            self.lbl_threads.configure(bg=t["card_bg"], fg=t["fg"])
+        if hasattr(self, "lbl_threads_hint"):
+            self.lbl_threads_hint.configure(bg=t["card_bg"], fg=t["fg_muted"])
+        if hasattr(self, "lbl_status"):
+            st_color = t["status_ok"] if not self.is_running else t["status_warn"]
+            self.lbl_status.configure(bg=t["card_bg"], fg=st_color)
+        if hasattr(self, "lbl_log_title"):
+            self.lbl_log_title.configure(bg=t["card_bg"], fg=t["accent"])
+        if hasattr(self, "lbl_adb_badge"):
+            cur_adb_text = self.lbl_adb_badge.cget("text")
+            if "Sẵn sàng" in cur_adb_text:
+                self.lbl_adb_badge.configure(bg=t["card_bg"], fg=t["status_ok"])
+            elif "Chưa có" in cur_adb_text or "Lỗi" in cur_adb_text:
+                self.lbl_adb_badge.configure(bg=t["card_bg"], fg=t["status_err"])
+            else:
+                self.lbl_adb_badge.configure(bg=t["card_bg"], fg=t["fg_muted"])
+
+        # 4. Các nút bấm (cập nhật bảng màu hover tương ứng)
+        if hasattr(self, "btn_update"):
+            make_hover_button(self.btn_update, t["btn_primary_bg"], t["btn_primary_hover"], t["btn_primary_fg"], t["btn_primary_fg"])
+        if hasattr(self, "btn_repo_cfg"):
+            make_hover_button(self.btn_repo_cfg, t["btn_secondary_bg"], t["btn_secondary_hover"], t["btn_secondary_fg"], t["fg"])
+        if hasattr(self, "btn_scan"):
+            make_hover_button(self.btn_scan, t["btn_action_bg"], t["btn_action_hover"], t["btn_action_fg"], t["btn_action_fg"])
+        if hasattr(self, "btn_paste"):
+            make_hover_button(self.btn_paste, t["btn_secondary_bg"], t["btn_secondary_hover"], t["btn_secondary_fg"], t["fg"])
+        if hasattr(self, "btn_clear"):
+            make_hover_button(self.btn_clear, t["btn_secondary_bg"], t["btn_secondary_hover"], t["btn_secondary_fg"], t["fg"])
+        if hasattr(self, "btn_start"):
+            if not self.is_running:
+                make_hover_button(self.btn_start, t["btn_primary_bg"], t["btn_primary_hover"], t["btn_primary_fg"], t["btn_primary_fg"])
+            else:
+                self.btn_start.configure(bg=t["btn_secondary_bg"], fg=t["fg_muted"])
+        if hasattr(self, "btn_stop"):
+            if self.is_running:
+                make_hover_button(self.btn_stop, t["status_err"], t["btn_stop_active"], "#ffffff", "#ffffff")
+            else:
+                self.btn_stop.configure(bg=t["btn_secondary_bg"], fg=t["btn_stop_fg"])
+        if hasattr(self, "btn_clr_log"):
+            make_hover_button(self.btn_clr_log, t["btn_secondary_bg"], t["btn_secondary_hover"], t["btn_secondary_fg"], t["fg"])
+        if hasattr(self, "btn_sav_log"):
+            make_hover_button(self.btn_sav_log, t["btn_secondary_bg"], t["btn_secondary_hover"], t["btn_secondary_fg"], t["fg"])
+
+        # 5. Checkbuttons
+        for cb in getattr(self, "checkbuttons", []):
+            try:
+                cb.configure(
+                    bg=t["card_bg"], 
+                    fg=t["fg"], 
+                    selectcolor=t["input_bg"], 
+                    activebackground=t["card_bg"], 
+                    activeforeground=t["accent"]
+                )
+            except Exception:
+                pass
+
+        if hasattr(self, "cb7"):
+            self.cb7.configure(
+                bg=t["bg"], 
+                fg=t["accent"], 
+                selectcolor=t["card_bg"], 
+                activebackground=t["bg"], 
+                activeforeground=t["accent"]
+            )
+
+        # 6. Ô nhập liệu Text / Entry
+        if hasattr(self, "txt_uids"):
+            self.txt_uids.configure(
+                bg=t["input_bg"], 
+                fg=t["input_fg"], 
+                insertbackground=t["accent"], 
+                selectbackground=t["btn_action_bg"]
+            )
+
+        if hasattr(self, "ent_wifi"):
+            self.ent_wifi.configure(
+                bg=t["input_bg"], 
+                fg=t["input_fg"], 
+                insertbackground=t["accent"]
+            )
+
+        # 7. Ô Terminal log & các thẻ màu
+        if hasattr(self, "txt_log"):
+            self.txt_log.configure(
+                bg=t["log_bg"], 
+                fg=t["log_fg"], 
+                insertbackground=t["accent"]
+            )
+            self.txt_log.tag_configure("INFO", foreground=t["log_info"])
+            self.txt_log.tag_configure("SUCCESS", foreground=t["log_success"])
+            self.txt_log.tag_configure("WARNING", foreground=t["log_warning"])
+            self.txt_log.tag_configure("ERROR", foreground=t["log_error"])
+            self.txt_log.tag_configure("CMD", foreground=t["log_cmd"])
+
+        # 8. TTK Styles
+        try:
+            self.style.configure(
+                "TProgressbar", 
+                thickness=8, 
+                troughcolor=t["pb_trough"], 
+                background=t["pb_bg"], 
+                bordercolor=t["card_border"], 
+                lightcolor=t["pb_bg"], 
+                darkcolor=t["pb_bg"]
+            )
+        except Exception:
+            pass
+
     def _setup_styles(self):
-        self.root.configure(bg="#0d1117")
+        t = self.curr_theme
+        self.root.configure(bg=t["bg"])
         self.style = ttk.Style()
         try:
             self.style.theme_use("clam")
         except Exception:
             pass
 
-        self.style.configure(".", background="#0d1117", foreground="#f0f6fc")
-        self.style.configure("TFrame", background="#0d1117")
-        self.style.configure("Card.TFrame", background="#161b22")
-        self.style.configure("TLabel", background="#0d1117", foreground="#f0f6fc", font=("Segoe UI", 10))
-        self.style.configure("Card.TLabel", background="#161b22", foreground="#f0f6fc", font=("Segoe UI", 10))
-        self.style.configure("Header.TLabel", background="#161b22", font=("Segoe UI", 15, "bold"), foreground="#58a6ff")
-        self.style.configure("SubHeader.TLabel", background="#161b22", font=("Segoe UI", 9), foreground="#8b949e")
-        self.style.configure("CardHeader.TLabel", background="#161b22", font=("Segoe UI", 10, "bold"), foreground="#58a6ff")
+        self.style.configure(".", background=t["bg"], foreground=t["fg"])
+        self.style.configure("TFrame", background=t["bg"])
+        self.style.configure("Card.TFrame", background=t["card_bg"])
+        self.style.configure("TLabel", background=t["bg"], foreground=t["fg"], font=("Segoe UI", 10))
+        self.style.configure("Card.TLabel", background=t["card_bg"], foreground=t["fg"], font=("Segoe UI", 10))
+        self.style.configure("Header.TLabel", background=t["card_bg"], font=("Segoe UI", 15, "bold"), foreground=t["accent"])
+        self.style.configure("SubHeader.TLabel", background=t["card_bg"], font=("Segoe UI", 9), foreground=t["fg_muted"])
+        self.style.configure("CardHeader.TLabel", background=t["card_bg"], font=("Segoe UI", 10, "bold"), foreground=t["accent"])
         
         self.style.configure(
             "TProgressbar", 
             thickness=8, 
-            troughcolor="#0d1117", 
-            background="#238636", 
-            bordercolor="#30363d", 
-            lightcolor="#2ea043", 
-            darkcolor="#238636"
+            troughcolor=t["pb_trough"], 
+            background=t["pb_bg"], 
+            bordercolor=t["card_border"], 
+            lightcolor=t["pb_bg"], 
+            darkcolor=t["pb_bg"]
         )
 
     def _build_ui(self):
-        main_container = tk.Frame(self.root, bg="#0d1117", padx=12, pady=10)
-        main_container.pack(fill=tk.BOTH, expand=True)
+        t = self.curr_theme
+        self.card_frames = []
+        self.inner_frames = []
+        self.checkbuttons = []
 
-        # 1. HEADER CARD (Banner công cụ & Nút cập nhật)
-        header_card = tk.Frame(main_container, bg="#161b22", highlightbackground="#30363d", highlightthickness=1, padx=12, pady=10)
-        header_card.pack(fill=tk.X, pady=(0, 8))
+        self.main_container = tk.Frame(self.root, bg=t["bg"], padx=12, pady=10)
+        self.main_container.pack(fill=tk.BOTH, expand=True)
 
-        header_left = tk.Frame(header_card, bg="#161b22")
-        header_left.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        # 1. HEADER CARD (Banner công cụ & Cụm chức năng góc phải)
+        self.header_card = tk.Frame(self.main_container, bg=t["card_bg"], highlightbackground=t["card_border"], highlightthickness=1, padx=12, pady=10)
+        self.header_card.pack(fill=tk.X, pady=(0, 8))
+        self.card_frames.append(self.header_card)
+
+        # CỤM BÊN PHẢI (Pack TRƯỚC để luôn hiển thị 100%, không bao giờ bị đè hay tràn khi co dãn cửa sổ)
+        self.header_right = tk.Frame(self.header_card, bg=t["card_bg"])
+        self.header_right.pack(side=tk.RIGHT, anchor=tk.E, padx=(10, 0))
+        self.inner_frames.append(self.header_right)
+
+        # Hộp chọn Theme
+        self.theme_box = tk.Frame(self.header_right, bg=t["card_bg"])
+        self.theme_box.pack(side=tk.LEFT, padx=(0, 8))
+        self.inner_frames.append(self.theme_box)
+
+        self.lbl_theme_icon = tk.Label(self.theme_box, text="🎨 Giao diện:", font=("Segoe UI", 9, "bold"), fg=t["accent"], bg=t["card_bg"])
+        self.lbl_theme_icon.pack(side=tk.LEFT, padx=(0, 4))
+
+        self.cb_theme = ttk.Combobox(
+            self.theme_box,
+            values=list(THEMES.keys()),
+            state="readonly",
+            width=13,
+            font=("Segoe UI", 9)
+        )
+        self.cb_theme.set(self.curr_theme_name)
+        self.cb_theme.bind("<<ComboboxSelected>>", self._on_theme_change)
+        self.cb_theme.pack(side=tk.LEFT)
+
+        self.btn_update = tk.Button(
+            self.header_right, 
+            text="🔄 Cập nhật", 
+            font=("Segoe UI", 9, "bold"), 
+            relief=tk.FLAT, 
+            cursor="hand2", 
+            padx=10, 
+            pady=4,
+            command=lambda: self.check_github_update(silent=False)
+        )
+        self.btn_update.pack(side=tk.LEFT, padx=(0, 6))
+
+        self.btn_repo_cfg = tk.Button(
+            self.header_right, 
+            text="⚙ Repo", 
+            font=("Segoe UI", 9), 
+            relief=tk.FLAT, 
+            cursor="hand2", 
+            padx=8, 
+            pady=4, 
+            command=self.configure_repo
+        )
+        self.btn_repo_cfg.pack(side=tk.LEFT)
+
+        # CỤM BÊN TRÁI (Logo, Tên Tool, Version, ADB Status và Phụ đề)
+        self.header_left = tk.Frame(self.header_card, bg=t["card_bg"])
+        self.header_left.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.inner_frames.append(self.header_left)
 
         # Logo phát sáng
         logo_path = get_resource_path("icon_48.png")
@@ -475,181 +920,141 @@ class WifiFixerApp:
         if os.path.exists(logo_path):
             try:
                 self._logo_img = tk.PhotoImage(file=logo_path)
-                logo_lbl = tk.Label(header_left, image=self._logo_img, bg="#161b22")
-                logo_lbl.pack(side=tk.LEFT, padx=(0, 12))
+                self.logo_lbl = tk.Label(self.header_left, image=self._logo_img, bg=t["card_bg"])
+                self.logo_lbl.pack(side=tk.LEFT, padx=(0, 10))
             except Exception:
                 pass
 
-        header_text_frame = tk.Frame(header_left, bg="#161b22")
-        header_text_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.header_text_frame = tk.Frame(self.header_left, bg=t["card_bg"])
+        self.header_text_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.inner_frames.append(self.header_text_frame)
 
-        title_row = tk.Frame(header_text_frame, bg="#161b22")
-        title_row.pack(anchor=tk.W, fill=tk.X)
+        self.title_row = tk.Frame(self.header_text_frame, bg=t["card_bg"])
+        self.title_row.pack(anchor=tk.W, fill=tk.X)
+        self.inner_frames.append(self.title_row)
 
-        title_lbl = tk.Label(title_row, text="FIX WIFI", font=("Segoe UI", 15, "bold"), fg="#58a6ff", bg="#161b22")
-        title_lbl.pack(side=tk.LEFT)
+        self.title_lbl = tk.Label(self.title_row, text="FIX WIFI", font=("Segoe UI", 15, "bold"), fg=t["accent"], bg=t["card_bg"])
+        self.title_lbl.pack(side=tk.LEFT)
 
-        ver_badge = tk.Label(
-            title_row, 
+        self.ver_badge = tk.Label(
+            self.title_row, 
             text=f" {APP_VERSION} ", 
             font=("Segoe UI", 9, "bold"), 
-            bg="#238636", 
-            fg="#ffffff", 
+            bg=t["badge_bg"], 
+            fg=t["badge_fg"], 
             padx=6, 
             pady=1
         )
-        ver_badge.pack(side=tk.LEFT, padx=(8, 0))
+        self.ver_badge.pack(side=tk.LEFT, padx=(8, 0))
 
-        sub_lbl = tk.Label(
-            header_text_frame, 
-            text="Gỡ lỗi kẹt Proxy, clear app College Proxy, không bắt được Wi-Fi, tự động kết nối Wi-Fi mới qua app ADBJoinWiFi.", 
-            font=("Segoe UI", 9), 
-            fg="#8b949e", 
-            bg="#161b22"
-        )
-        sub_lbl.pack(anchor=tk.W, pady=(2, 0))
-
-        # Cụm nút Cập nhật GitHub góc phải
-        header_right = tk.Frame(header_card, bg="#161b22")
-        header_right.pack(side=tk.RIGHT, anchor=tk.E, padx=(10, 0))
-
+        # Đặt trạng thái ADB ngay cạnh tiêu đề phiên bản
         self.lbl_adb_badge = tk.Label(
-            header_right, 
+            self.title_row, 
             text="● ADB: Đang quét...", 
             font=("Segoe UI", 9, "bold"), 
-            fg="#8b949e", 
-            bg="#161b22"
+            fg=t["fg_muted"], 
+            bg=t["card_bg"],
+            padx=6
         )
-        self.lbl_adb_badge.pack(side=tk.LEFT, padx=(0, 10))
+        self.lbl_adb_badge.pack(side=tk.LEFT, padx=(8, 0))
 
-        self.btn_update = tk.Button(
-            header_right, 
-            text="🔄 Kiểm tra Cập nhật", 
-            font=("Segoe UI", 9, "bold"), 
-            bg="#238636", 
-            fg="#ffffff", 
-            activebackground="#2ea043", 
-            activeforeground="#ffffff",
-            relief=tk.FLAT, 
-            cursor="hand2", 
-            padx=12, 
-            pady=5,
-            command=lambda: self.check_github_update(silent=False)
-        )
-        self.btn_update.pack(side=tk.LEFT, padx=(0, 6))
-        make_hover_button(self.btn_update, "#238636", "#2ea043")
-
-        btn_repo_cfg = tk.Button(
-            header_right, 
-            text="⚙ Repo", 
+        self.sub_lbl = tk.Label(
+            self.header_text_frame, 
+            text="Gỡ lỗi kẹt Proxy, clear College Proxy, reset Wi-Fi & kết nối tự động qua ADBJoinWiFi.", 
             font=("Segoe UI", 9), 
-            bg="#21262d", 
-            fg="#c9d1d9", 
-            activebackground="#30363d", 
-            activeforeground="#ffffff",
+            fg=t["fg_muted"], 
+            bg=t["card_bg"],
+            anchor=tk.W,
+            justify=tk.LEFT
+        )
+        self.sub_lbl.pack(anchor=tk.W, fill=tk.X, pady=(2, 0))
+
+        # 2. KHUNG NHẬP DANH SÁCH UID
+        self.uid_card = tk.Frame(self.main_container, bg=t["card_bg"], highlightbackground=t["card_border"], highlightthickness=1, padx=10, pady=8)
+        self.uid_card.pack(fill=tk.BOTH, expand=False, pady=(0, 8))
+        self.card_frames.append(self.uid_card)
+
+        self.btn_row = tk.Frame(self.uid_card, bg=t["card_bg"])
+        self.btn_row.pack(fill=tk.X, pady=(0, 6))
+        self.inner_frames.append(self.btn_row)
+
+        # Số lượng UID bên phải (pack trước)
+        self.lbl_uid_count = tk.Label(
+            self.btn_row, 
+            text=" 0 UID ", 
+            font=("Segoe UI", 9, "bold"), 
+            bg=t["btn_secondary_bg"], 
+            fg=t["status_ok"], 
+            padx=8, 
+            pady=2
+        )
+        self.lbl_uid_count.pack(side=tk.RIGHT, padx=2)
+
+        self.lbl_uid_title = tk.Label(self.btn_row, text="📱 Thiết Bị Android (UID / Serial):", font=("Segoe UI", 10, "bold"), fg=t["accent"], bg=t["card_bg"])
+        self.lbl_uid_title.pack(side=tk.LEFT, padx=(0, 8))
+
+        self.btn_scan = tk.Button(
+            self.btn_row, 
+            text="🔍 Quét ADB", 
+            font=("Segoe UI", 9, "bold"), 
             relief=tk.FLAT, 
             cursor="hand2", 
             padx=8, 
-            pady=5, 
-            command=self.configure_repo
-        )
-        btn_repo_cfg.pack(side=tk.LEFT)
-        make_hover_button(btn_repo_cfg, "#21262d", "#30363d")
-
-        # 2. KHUNG NHẬP DANH SÁCH UID
-        uid_card = tk.Frame(main_container, bg="#161b22", highlightbackground="#30363d", highlightthickness=1, padx=10, pady=8)
-        uid_card.pack(fill=tk.BOTH, expand=False, pady=(0, 8))
-
-        btn_row = tk.Frame(uid_card, bg="#161b22")
-        btn_row.pack(fill=tk.X, pady=(0, 6))
-
-        tk.Label(btn_row, text="📱 Danh Sách Thiết Bị Android (UID / Serial):", font=("Segoe UI", 10, "bold"), fg="#58a6ff", bg="#161b22").pack(side=tk.LEFT, padx=(0, 10))
-
-        self.btn_scan = tk.Button(
-            btn_row, 
-            text="🔍 Quét thiết bị ADB", 
-            font=("Segoe UI", 9, "bold"), 
-            bg="#1f6feb", 
-            fg="#ffffff", 
-            activebackground="#388bfd", 
-            activeforeground="#ffffff",
-            relief=tk.FLAT, 
-            cursor="hand2", 
-            padx=10, 
             pady=3,
             command=self.scan_adb_devices
         )
-        self.btn_scan.pack(side=tk.LEFT, padx=(0, 6))
-        make_hover_button(self.btn_scan, "#1f6feb", "#388bfd")
+        self.btn_scan.pack(side=tk.LEFT, padx=(0, 5))
 
         self.btn_paste = tk.Button(
-            btn_row, 
-            text="📋 Dán từ Clipboard", 
+            self.btn_row, 
+            text="📋 Dán Clipboard", 
             font=("Segoe UI", 9), 
-            bg="#21262d", 
-            fg="#c9d1d9", 
-            activebackground="#30363d", 
-            activeforeground="#ffffff",
             relief=tk.FLAT, 
             cursor="hand2", 
             padx=8, 
             pady=3,
             command=self.paste_from_clipboard
         )
-        self.btn_paste.pack(side=tk.LEFT, padx=(0, 6))
-        make_hover_button(self.btn_paste, "#21262d", "#30363d")
+        self.btn_paste.pack(side=tk.LEFT, padx=(0, 5))
 
         self.btn_clear = tk.Button(
-            btn_row, 
-            text="🗑 Xóa ô nhập", 
+            self.btn_row, 
+            text="🗑 Xóa ô", 
             font=("Segoe UI", 9), 
-            bg="#21262d", 
-            fg="#c9d1d9", 
-            activebackground="#30363d", 
-            activeforeground="#ffffff",
             relief=tk.FLAT, 
             cursor="hand2", 
             padx=8, 
             pady=3,
             command=self.clear_uids
         )
-        self.btn_clear.pack(side=tk.LEFT, padx=(0, 6))
-        make_hover_button(self.btn_clear, "#21262d", "#30363d")
-
-        self.lbl_uid_count = tk.Label(
-            btn_row, 
-            text=" 0 UID ", 
-            font=("Segoe UI", 9, "bold"), 
-            bg="#21262d", 
-            fg="#3fb950", 
-            padx=8, 
-            pady=2
-        )
-        self.lbl_uid_count.pack(side=tk.RIGHT, padx=2)
+        self.btn_clear.pack(side=tk.LEFT, padx=(0, 5))
 
         # Ô Text nhập UIDs
         self.txt_uids = scrolledtext.ScrolledText(
-            uid_card, 
+            self.uid_card, 
             height=4, 
             font=("Consolas", 10), 
             wrap=tk.WORD, 
-            bg="#090d13", 
-            fg="#e6edf3", 
-            insertbackground="#58a6ff", 
-            selectbackground="#1f6feb", 
+            bg=t["input_bg"], 
+            fg=t["input_fg"], 
+            insertbackground=t["accent"], 
+            selectbackground=t["btn_action_bg"], 
             relief=tk.FLAT
         )
         self.txt_uids.pack(fill=tk.BOTH, expand=True)
         self.txt_uids.bind("<KeyRelease>", self._update_uid_count)
 
         # 3. TÙY CHỌN GỠ LỖI & KẾT NỐI WI-FI MỚI
-        opt_card = tk.Frame(main_container, bg="#161b22", highlightbackground="#30363d", highlightthickness=1, padx=10, pady=8)
-        opt_card.pack(fill=tk.X, pady=(0, 8))
+        self.opt_card = tk.Frame(self.main_container, bg=t["card_bg"], highlightbackground=t["card_border"], highlightthickness=1, padx=10, pady=8)
+        self.opt_card.pack(fill=tk.X, pady=(0, 8))
+        self.card_frames.append(self.opt_card)
 
-        tk.Label(opt_card, text="⚡ Các Bước Xử Lý Gỡ Lỗi & Kết Nối Wi-Fi:", font=("Segoe UI", 10, "bold"), fg="#58a6ff", bg="#161b22").pack(anchor=tk.W, pady=(0, 6))
+        self.lbl_opt_title = tk.Label(self.opt_card, text="⚡ Các Bước Xử Lý Gỡ Lỗi & Kết Nối Wi-Fi:", font=("Segoe UI", 10, "bold"), fg=t["accent"], bg=t["card_bg"])
+        self.lbl_opt_title.pack(anchor=tk.W, pady=(0, 6))
 
-        cb_grid = tk.Frame(opt_card, bg="#161b22")
-        cb_grid.pack(fill=tk.X)
+        self.cb_grid = tk.Frame(self.opt_card, bg=t["card_bg"])
+        self.cb_grid.pack(fill=tk.X)
+        self.inner_frames.append(self.cb_grid)
 
         self.var_clear_proxy = tk.BooleanVar(value=True)
         self.var_clear_college = tk.BooleanVar(value=True)
@@ -659,85 +1064,95 @@ class WifiFixerApp:
         self.var_enable_wifi = tk.BooleanVar(value=True)
 
         cb_style = {
-            "bg": "#161b22", 
-            "fg": "#e6edf3", 
-            "selectcolor": "#090d13", 
-            "activebackground": "#161b22", 
-            "activeforeground": "#58a6ff", 
+            "bg": t["card_bg"], 
+            "fg": t["fg"], 
+            "selectcolor": t["input_bg"], 
+            "activebackground": t["card_bg"], 
+            "activeforeground": t["accent"], 
             "font": ("Segoe UI", 9)
         }
 
-        cb1 = tk.Checkbutton(cb_grid, text="1. Xóa sạch HTTP Proxy (settings delete proxy)", variable=self.var_clear_proxy, **cb_style)
-        cb1.grid(row=0, column=0, sticky=tk.W, pady=2, padx=4)
+        self.cb1 = tk.Checkbutton(self.cb_grid, text="1. Xóa sạch HTTP Proxy (settings delete proxy)", variable=self.var_clear_proxy, **cb_style)
+        self.cb1.grid(row=0, column=0, sticky=tk.W, pady=2, padx=4)
 
-        cb2 = tk.Checkbutton(cb_grid, text="2. Xóa dữ liệu app College Proxy (pm clear & stop)", variable=self.var_clear_college, **cb_style)
-        cb2.grid(row=0, column=1, sticky=tk.W, pady=2, padx=15)
+        self.cb2 = tk.Checkbutton(self.cb_grid, text="2. Xóa dữ liệu app College Proxy (pm clear & stop)", variable=self.var_clear_college, **cb_style)
+        self.cb2.grid(row=0, column=1, sticky=tk.W, pady=2, padx=15)
 
-        cb3 = tk.Checkbutton(cb_grid, text="3. Quên toàn bộ Wi-Fi cũ (forget-network 0..15)", variable=self.var_forget_wifi, **cb_style)
-        cb3.grid(row=1, column=0, sticky=tk.W, pady=2, padx=4)
+        self.cb3 = tk.Checkbutton(self.cb_grid, text="3. Quên toàn bộ Wi-Fi cũ (forget-network 0..15)", variable=self.var_forget_wifi, **cb_style)
+        self.cb3.grid(row=1, column=0, sticky=tk.W, pady=2, padx=4)
 
-        cb4 = tk.Checkbutton(cb_grid, text="4. Tắt & Ngắt app ADBJoinWiFi cũ", variable=self.var_stop_app, **cb_style)
-        cb4.grid(row=1, column=1, sticky=tk.W, pady=2, padx=15)
+        self.cb4 = tk.Checkbutton(self.cb_grid, text="4. Tắt & Ngắt app ADBJoinWiFi cũ", variable=self.var_stop_app, **cb_style)
+        self.cb4.grid(row=1, column=1, sticky=tk.W, pady=2, padx=15)
 
-        cb5 = tk.Checkbutton(cb_grid, text="5. Tắt Wi-Fi (svc wifi disable)", variable=self.var_disable_wifi, **cb_style)
-        cb5.grid(row=2, column=0, sticky=tk.W, pady=2, padx=4)
+        self.cb5 = tk.Checkbutton(self.cb_grid, text="5. Tắt Wi-Fi (svc wifi disable)", variable=self.var_disable_wifi, **cb_style)
+        self.cb5.grid(row=2, column=0, sticky=tk.W, pady=2, padx=4)
 
-        cb6 = tk.Checkbutton(cb_grid, text="6. Tự động BẬT LẠI Wi-Fi (svc wifi enable)", variable=self.var_enable_wifi, command=self._on_enable_wifi_toggle, **cb_style)
-        cb6.grid(row=2, column=1, sticky=tk.W, pady=2, padx=15)
+        self.cb6 = tk.Checkbutton(self.cb_grid, text="6. Tự động BẬT LẠI Wi-Fi (svc wifi enable)", variable=self.var_enable_wifi, command=self._on_enable_wifi_toggle, **cb_style)
+        self.cb6.grid(row=2, column=1, sticky=tk.W, pady=2, padx=15)
+
+        self.checkbuttons = [self.cb1, self.cb2, self.cb3, self.cb4, self.cb5, self.cb6]
 
         # Bước 7: Khung kết nối Wi-Fi mới
         self.var_connect_wifi = tk.BooleanVar(value=True)
-        wifi_conn_frame = tk.Frame(opt_card, bg="#0d1117", highlightbackground="#30363d", highlightthickness=1, padx=8, pady=6)
-        wifi_conn_frame.pack(fill=tk.X, pady=(6, 4))
+        self.wifi_conn_frame = tk.Frame(self.opt_card, bg=t["bg"], highlightbackground=t["card_border"], highlightthickness=1, padx=8, pady=6)
+        self.wifi_conn_frame.pack(fill=tk.X, pady=(6, 4))
 
         self.cb7 = tk.Checkbutton(
-            wifi_conn_frame, 
+            self.wifi_conn_frame, 
             text="7. Kết nối lại Wi-Fi mới qua ADBJoinWiFi:", 
             variable=self.var_connect_wifi,
             command=self._on_connect_wifi_toggle,
-            bg="#0d1117", fg="#58a6ff", selectcolor="#161b22", activebackground="#0d1117", activeforeground="#58a6ff", font=("Segoe UI", 9, "bold")
+            bg=t["bg"], fg=t["accent"], selectcolor=t["card_bg"], activebackground=t["bg"], activeforeground=t["accent"], font=("Segoe UI", 9, "bold")
         )
         self.cb7.pack(side=tk.LEFT, padx=(0, 6))
 
         self.ent_wifi = tk.Entry(
-            wifi_conn_frame, 
+            self.wifi_conn_frame, 
             width=28, 
             font=("Consolas", 10, "bold"), 
-            bg="#161b22", 
-            fg="#58a6ff", 
-            insertbackground="#58a6ff", 
+            bg=t["input_bg"], 
+            fg=t["input_fg"], 
+            insertbackground=t["accent"], 
             relief=tk.FLAT
         )
         self.ent_wifi.insert(0, "Aruba3.2|66668888")
         self.ent_wifi.pack(side=tk.LEFT, padx=(0, 8), ipady=3)
 
-        tk.Label(wifi_conn_frame, text="(Định dạng: Tên_Wifi|Mật_khẩu)", font=("Segoe UI", 9, "italic"), fg="#8b949e", bg="#0d1117").pack(side=tk.LEFT)
+        self.lbl_wifi_hint = tk.Label(self.wifi_conn_frame, text="(Định dạng: Tên_Wifi|Mật_khẩu)", font=("Segoe UI", 9, "italic"), fg=t["fg_muted"], bg=t["bg"])
+        self.lbl_wifi_hint.pack(side=tk.LEFT)
 
         # Cấu hình đa luồng
-        thread_frame = tk.Frame(opt_card, bg="#161b22")
-        thread_frame.pack(fill=tk.X, pady=(4, 0))
+        self.thread_frame = tk.Frame(self.opt_card, bg=t["card_bg"])
+        self.thread_frame.pack(fill=tk.X, pady=(4, 0))
+        self.inner_frames.append(self.thread_frame)
         
-        tk.Label(thread_frame, text="⚡ Số luồng xử lý song song (Threads):", font=("Segoe UI", 9), fg="#e6edf3", bg="#161b22").pack(side=tk.LEFT, padx=(0, 5))
-        self.spn_threads = ttk.Spinbox(thread_frame, from_=1, to=50, width=5)
+        self.lbl_threads = tk.Label(self.thread_frame, text="⚡ Số luồng xử lý song song (Threads):", font=("Segoe UI", 9), fg=t["fg"], bg=t["card_bg"])
+        self.lbl_threads.pack(side=tk.LEFT, padx=(0, 5))
+
+        self.spn_threads = ttk.Spinbox(self.thread_frame, from_=1, to=50, width=5)
         self.spn_threads.set(10)
-        self.spn_threads.pack(side=tk.LEFT, padx=(0, 12))
-        tk.Label(thread_frame, text="(Xử lý đồng thời 50-100 máy trong vài giây)", font=("Segoe UI", 9, "italic"), fg="#8b949e", bg="#161b22").pack(side=tk.LEFT)
+        self.spn_threads.pack(side=tk.LEFT, padx=(0, 10))
+
+        self.lbl_threads_hint = tk.Label(self.thread_frame, text="(Xử lý đồng thời 50-100 máy trong vài giây)", font=("Segoe UI", 9, "italic"), fg=t["fg_muted"], bg=t["card_bg"])
+        self.lbl_threads_hint.pack(side=tk.LEFT)
 
         # 4. ĐIỀU KHIỂN & TIẾN TRÌNH
-        ctl_card = tk.Frame(main_container, bg="#161b22", highlightbackground="#30363d", highlightthickness=1, padx=10, pady=8)
-        ctl_card.pack(fill=tk.X, pady=(0, 8))
+        self.ctl_card = tk.Frame(self.main_container, bg=t["card_bg"], highlightbackground=t["card_border"], highlightthickness=1, padx=10, pady=8)
+        self.ctl_card.pack(fill=tk.X, pady=(0, 8))
+        self.card_frames.append(self.ctl_card)
 
-        ctl_left = tk.Frame(ctl_card, bg="#161b22")
-        ctl_left.pack(side=tk.LEFT)
+        # Trạng thái góc phải (pack trước)
+        self.lbl_status = tk.Label(self.ctl_card, text="● Sẵn sàng...", font=("Segoe UI", 10, "bold"), fg=t["status_ok"], bg=t["card_bg"])
+        self.lbl_status.pack(side=tk.RIGHT, padx=6)
+
+        self.ctl_left = tk.Frame(self.ctl_card, bg=t["card_bg"])
+        self.ctl_left.pack(side=tk.LEFT)
+        self.inner_frames.append(self.ctl_left)
 
         self.btn_start = tk.Button(
-            ctl_left, 
+            self.ctl_left, 
             text="▶ BẮT ĐẦU GỠ LỖI & SỬA WI-FI", 
             font=("Segoe UI", 11, "bold"), 
-            bg="#238636", 
-            fg="#ffffff", 
-            activebackground="#2ea043", 
-            activeforeground="#ffffff", 
             relief=tk.FLAT, 
             cursor="hand2", 
             padx=18, 
@@ -745,16 +1160,11 @@ class WifiFixerApp:
             command=self.start_fixing
         )
         self.btn_start.pack(side=tk.LEFT, padx=(0, 8))
-        make_hover_button(self.btn_start, "#238636", "#2ea043")
 
         self.btn_stop = tk.Button(
-            ctl_left, 
+            self.ctl_left, 
             text="⏹ DỪNG LẠI", 
             font=("Segoe UI", 11, "bold"), 
-            bg="#21262d", 
-            fg="#8b949e", 
-            activebackground="#da3633", 
-            activeforeground="#ffffff", 
             relief=tk.FLAT, 
             padx=14, 
             pady=8, 
@@ -762,75 +1172,58 @@ class WifiFixerApp:
             command=self.stop_fixing
         )
         self.btn_stop.pack(side=tk.LEFT)
-        make_hover_button(self.btn_stop, "#21262d", "#da3633", "#8b949e", "#ffffff")
-
-        self.lbl_status = tk.Label(ctl_card, text="● Sẵn sàng...", font=("Segoe UI", 10, "bold"), fg="#3fb950", bg="#161b22")
-        self.lbl_status.pack(side=tk.RIGHT, padx=6)
 
         # Thanh tiến trình
-        self.progress_bar = ttk.Progressbar(main_container, orient="horizontal", mode="determinate")
+        self.progress_bar = ttk.Progressbar(self.main_container, orient="horizontal", mode="determinate")
         self.progress_bar.pack(fill=tk.X, pady=(0, 8))
 
         # 5. NHẬT KÝ / LOG TERMINAL
-        log_card = tk.Frame(main_container, bg="#161b22", highlightbackground="#30363d", highlightthickness=1, padx=10, pady=8)
-        log_card.pack(fill=tk.BOTH, expand=True)
+        self.log_card = tk.Frame(self.main_container, bg=t["card_bg"], highlightbackground=t["card_border"], highlightthickness=1, padx=10, pady=8)
+        self.log_card.pack(fill=tk.BOTH, expand=True)
+        self.card_frames.append(self.log_card)
 
-        log_btn_row = tk.Frame(log_card, bg="#161b22")
-        log_btn_row.pack(fill=tk.X, pady=(0, 4))
+        self.log_btn_row = tk.Frame(self.log_card, bg=t["card_bg"])
+        self.log_btn_row.pack(fill=tk.X, pady=(0, 4))
+        self.inner_frames.append(self.log_btn_row)
 
-        tk.Label(log_btn_row, text="📜 Nhật Ký Hoạt Động (Live Terminal):", font=("Segoe UI", 10, "bold"), fg="#58a6ff", bg="#161b22").pack(side=tk.LEFT, padx=(0, 10))
-
-        btn_clr_log = tk.Button(
-            log_btn_row, 
-            text="🧹 Xóa Log", 
+        # Nút Lưu và Xóa bên phải (pack trước)
+        self.btn_sav_log = tk.Button(
+            self.log_btn_row, 
+            text="💾 Lưu Log", 
             font=("Segoe UI", 8), 
-            bg="#21262d", 
-            fg="#c9d1d9", 
-            activebackground="#30363d", 
-            activeforeground="#ffffff", 
             relief=tk.FLAT, 
             cursor="hand2", 
             padx=8, 
-            pady=2,
-            command=self.clear_log
-        )
-        btn_clr_log.pack(side=tk.LEFT, padx=(0, 6))
-        make_hover_button(btn_clr_log, "#21262d", "#30363d")
-
-        btn_sav_log = tk.Button(
-            log_btn_row, 
-            text="💾 Lưu Log ra file", 
-            font=("Segoe UI", 8), 
-            bg="#21262d", 
-            fg="#c9d1d9", 
-            activebackground="#30363d", 
-            activeforeground="#ffffff", 
-            relief=tk.FLAT, 
-            cursor="hand2", 
-            padx=8, 
-            pady=2,
+            pady=2, 
             command=self.save_log_file
         )
-        btn_sav_log.pack(side=tk.LEFT)
-        make_hover_button(btn_sav_log, "#21262d", "#30363d")
+        self.btn_sav_log.pack(side=tk.RIGHT, padx=(4, 0))
+
+        self.btn_clr_log = tk.Button(
+            self.log_btn_row, 
+            text="🧹 Xóa Log", 
+            font=("Segoe UI", 8), 
+            relief=tk.FLAT, 
+            cursor="hand2", 
+            padx=8, 
+            pady=2, 
+            command=self.clear_log
+        )
+        self.btn_clr_log.pack(side=tk.RIGHT)
+
+        self.lbl_log_title = tk.Label(self.log_btn_row, text="📜 Nhật Ký Hoạt Động (Live Terminal):", font=("Segoe UI", 10, "bold"), fg=t["accent"], bg=t["card_bg"])
+        self.lbl_log_title.pack(side=tk.LEFT)
 
         self.txt_log = scrolledtext.ScrolledText(
-            log_card, 
+            self.log_card, 
             height=10, 
             font=("Consolas", 9), 
-            bg="#070a11", 
-            fg="#e6edf3", 
+            bg=t["log_bg"], 
+            fg=t["log_fg"], 
             relief=tk.FLAT, 
-            insertbackground="#58a6ff"
+            insertbackground=t["accent"]
         )
         self.txt_log.pack(fill=tk.BOTH, expand=True)
-
-        # Cấu hình màu cho log
-        self.txt_log.tag_configure("INFO", foreground="#58a6ff")
-        self.txt_log.tag_configure("SUCCESS", foreground="#3fb950", font=("Consolas", 9, "bold"))
-        self.txt_log.tag_configure("WARNING", foreground="#d29922")
-        self.txt_log.tag_configure("ERROR", foreground="#f85149", font=("Consolas", 9, "bold"))
-        self.txt_log.tag_configure("CMD", foreground="#8b949e")
 
     def _on_enable_wifi_toggle(self):
         if not self.var_enable_wifi.get():
@@ -888,15 +1281,15 @@ class WifiFixerApp:
             if res.returncode == 0:
                 self.log(f"Kết nối ADB thành công: {self.adb_bin}", "SUCCESS")
                 if hasattr(self, 'lbl_adb_badge'):
-                    self.lbl_adb_badge.config(text="● ADB Sẵn sàng", fg="#3fb950")
+                    self.lbl_adb_badge.config(text="● ADB Sẵn sàng", fg=self.curr_theme["status_ok"])
             else:
                 self.log("Cảnh báo: ADB trả về mã lỗi. Kiểm tra biến môi trường PATH.", "WARNING")
                 if hasattr(self, 'lbl_adb_badge'):
-                    self.lbl_adb_badge.config(text="● Lỗi ADB", fg="#d29922")
+                    self.lbl_adb_badge.config(text="● Lỗi ADB", fg=self.curr_theme["status_warn"])
         except FileNotFoundError:
             self.log("LỖI: Không tìm thấy ADB trên máy tính!", "ERROR")
             if hasattr(self, 'lbl_adb_badge'):
-                self.lbl_adb_badge.config(text="● Chưa có ADB", fg="#f85149")
+                self.lbl_adb_badge.config(text="● Chưa có ADB", fg=self.curr_theme["status_err"])
             notify_warning("Cảnh báo ADB", "Không tìm thấy ADB trong hệ thống.\nHãy chắc chắn ADB đã được cài đặt hoặc đặt adb.exe vào thư mục tool.", self.root)
 
     def get_parsed_uids(self):
@@ -1129,8 +1522,8 @@ class WifiFixerApp:
         self.is_running = True
         self.stop_requested = False
 
-        self.btn_start.config(state=tk.DISABLED, bg="#21262d", fg="#8b949e")
-        self.btn_stop.config(state=tk.NORMAL, bg="#da3633", fg="#ffffff")
+        self.btn_start.config(state=tk.DISABLED, bg=self.curr_theme["btn_secondary_bg"], fg=self.curr_theme["fg_muted"])
+        self.btn_stop.config(state=tk.NORMAL, bg=self.curr_theme["status_err"], fg="#ffffff")
         self.btn_scan.config(state=tk.DISABLED)
         self.progress_bar["value"] = 0
         self.progress_bar["maximum"] = len(uids)
@@ -1187,8 +1580,8 @@ class WifiFixerApp:
 
     def _finish_batch(self, success, fail, total):
         self.is_running = False
-        self.btn_start.config(state=tk.NORMAL, bg="#238636", fg="#ffffff")
-        self.btn_stop.config(state=tk.DISABLED, bg="#21262d", fg="#8b949e")
+        self.btn_start.config(state=tk.NORMAL, bg=self.curr_theme["btn_primary_bg"], fg=self.curr_theme["btn_primary_fg"])
+        self.btn_stop.config(state=tk.DISABLED, bg=self.curr_theme["btn_secondary_bg"], fg=self.curr_theme["btn_stop_fg"])
         self.btn_scan.config(state=tk.NORMAL)
         
         msg = f"Đã xử lý xong {total} thiết bị!\n- Thành công: {success}\n- Lỗi/Hủy: {fail}"
@@ -1226,7 +1619,7 @@ class WifiFixerApp:
     def check_github_update(self, silent=False):
         """Kiểm tra phiên bản mới từ GitHub Release trong luồng riêng"""
         repo = load_github_repo()
-        self.btn_update.config(text="Đang kiểm tra...", state=tk.DISABLED)
+        self.btn_update.config(text="⏳ Kiểm tra...", state=tk.DISABLED)
 
         def _worker():
             try:
@@ -1262,7 +1655,7 @@ class WifiFixerApp:
         threading.Thread(target=_worker, daemon=True).start()
 
     def _handle_update_result(self, tag_name, release_name, body, assets, html_url, repo, silent):
-        self.btn_update.config(text="🔄 Kiểm tra Cập nhật", state=tk.NORMAL)
+        self.btn_update.config(text="🔄 Cập nhật", state=tk.NORMAL)
         if is_newer_version(tag_name, APP_VERSION):
             self.log(f"Phát hiện bản cập nhật mới: {tag_name} (Hiện tại: {APP_VERSION})", "INFO")
             self._show_update_modal(tag_name, release_name, body, assets, html_url)
@@ -1272,14 +1665,15 @@ class WifiFixerApp:
                 notify_info("Cập nhật Tool", f"Bạn đang sử dụng phiên bản mới nhất ({APP_VERSION})!\n\nGitHub Repo: {repo}", self.root)
 
     def _handle_update_error(self, err_msg, silent):
-        self.btn_update.config(text="🔄 Kiểm tra Cập nhật", state=tk.NORMAL)
+        self.btn_update.config(text="🔄 Cập nhật", state=tk.NORMAL)
         if not silent:
             notify_warning("Kiểm tra Cập nhật", err_msg, self.root)
 
     def _show_update_modal(self, tag_name, release_name, body, assets, html_url):
+        t = self.curr_theme
         dlg = tk.Toplevel(self.root)
         dlg.title(f"Cập nhật Fix Wifi - {tag_name}")
-        dlg.configure(bg="#0d1117")
+        dlg.configure(bg=t["bg"])
         dlg.transient(self.root)
         dlg.grab_set()
 
@@ -1290,99 +1684,94 @@ class WifiFixerApp:
             except Exception:
                 pass
 
-        content = tk.Frame(dlg, bg="#0d1117", padx=16, pady=14)
+        content = tk.Frame(dlg, bg=t["bg"], padx=16, pady=14)
         content.pack(fill=tk.BOTH, expand=True)
 
         # Header banner
-        hdr_banner = tk.Frame(content, bg="#161b22", highlightbackground="#238636", highlightthickness=1, padx=14, pady=12)
+        hdr_banner = tk.Frame(content, bg=t["card_bg"], highlightbackground=t["card_border"], highlightthickness=1, padx=14, pady=12)
         hdr_banner.pack(fill=tk.X, pady=(0, 10))
 
-        lbl_top = tk.Label(hdr_banner, text=f"🎉 PHÁT HIỆN BẢN CẬP NHẬT MỚI: {tag_name}", font=("Segoe UI", 12, "bold"), fg="#3fb950", bg="#161b22")
+        lbl_top = tk.Label(hdr_banner, text=f"🎉 PHÁT HIỆN BẢN CẬP NHẬT MỚI: {tag_name}", font=("Segoe UI", 12, "bold"), fg=t["accent"], bg=t["card_bg"])
         lbl_top.pack(anchor=tk.W, pady=(0, 4))
 
-        sub_info_frame = tk.Frame(hdr_banner, bg="#161b22")
+        sub_info_frame = tk.Frame(hdr_banner, bg=t["card_bg"])
         sub_info_frame.pack(anchor=tk.W, fill=tk.X)
 
-        tk.Label(sub_info_frame, text=f"Bản hiện tại: {APP_VERSION}", font=("Segoe UI", 9), fg="#8b949e", bg="#161b22").pack(side=tk.LEFT)
-        tk.Label(sub_info_frame, text=" ➔ ", font=("Segoe UI", 9, "bold"), fg="#58a6ff", bg="#161b22").pack(side=tk.LEFT)
-        tk.Label(sub_info_frame, text=f" {tag_name} (KHUYÊN DÙNG) ", font=("Segoe UI", 9, "bold"), bg="#238636", fg="#ffffff", padx=6, pady=1).pack(side=tk.LEFT)
+        tk.Label(sub_info_frame, text=f"Bản hiện tại: {APP_VERSION}", font=("Segoe UI", 9), fg=t["fg_muted"], bg=t["card_bg"]).pack(side=tk.LEFT)
+        tk.Label(sub_info_frame, text=" ➔ ", font=("Segoe UI", 9, "bold"), fg=t["accent"], bg=t["card_bg"]).pack(side=tk.LEFT)
+        tk.Label(sub_info_frame, text=f" {tag_name} (KHUYÊN DÙNG) ", font=("Segoe UI", 9, "bold"), bg=t["badge_bg"], fg=t["badge_fg"], padx=6, pady=1).pack(side=tk.LEFT)
 
         if release_name and release_name != tag_name:
-            tk.Label(hdr_banner, text=f"Tiêu đề: {release_name}", font=("Segoe UI", 9, "italic"), fg="#c9d1d9", bg="#161b22").pack(anchor=tk.W, pady=(4, 0))
+            tk.Label(hdr_banner, text=f"Tiêu đề: {release_name}", font=("Segoe UI", 9, "italic"), fg=t["fg"], bg=t["card_bg"]).pack(anchor=tk.W, pady=(4, 0))
 
         # Changelog card
-        log_card = tk.Frame(content, bg="#161b22", highlightbackground="#30363d", highlightthickness=1, padx=12, pady=10)
+        log_card = tk.Frame(content, bg=t["card_bg"], highlightbackground=t["card_border"], highlightthickness=1, padx=12, pady=10)
         log_card.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
 
-        tk.Label(log_card, text="📝 Nội dung cập nhật & Cải tiến (Changelog):", font=("Segoe UI", 9, "bold"), fg="#58a6ff", bg="#161b22").pack(anchor=tk.W, pady=(0, 4))
+        tk.Label(log_card, text="📝 Nội dung cập nhật & Cải tiến (Changelog):", font=("Segoe UI", 9, "bold"), fg=t["accent"], bg=t["card_bg"]).pack(anchor=tk.W, pady=(0, 4))
         
-        txt_changelog = scrolledtext.ScrolledText(log_card, height=8, font=("Consolas", 9), bg="#070a11", fg="#e6edf3", insertbackground="#58a6ff", relief=tk.FLAT, wrap=tk.WORD)
+        txt_changelog = scrolledtext.ScrolledText(log_card, height=8, font=("Consolas", 9), bg=t["log_bg"], fg=t["log_fg"], insertbackground=t["accent"], relief=tk.FLAT, wrap=tk.WORD)
         txt_changelog.insert(tk.END, body if body.strip() else "Không có ghi chú thay đổi chi tiết.")
         txt_changelog.config(state=tk.DISABLED)
         txt_changelog.pack(fill=tk.BOTH, expand=True)
 
-        lbl_dl_status = tk.Label(content, text="", font=("Segoe UI", 9, "italic"), fg="#58a6ff", bg="#0d1117")
+        lbl_dl_status = tk.Label(content, text="", font=("Segoe UI", 9, "italic"), fg=t["accent"], bg=t["bg"])
         lbl_dl_status.pack(anchor=tk.W, pady=(0, 2))
 
         prog_dl = ttk.Progressbar(content, orient="horizontal", mode="determinate")
         prog_dl.pack(fill=tk.X, pady=(0, 10))
 
-        btn_box = tk.Frame(content, bg="#0d1117")
+        btn_box = tk.Frame(content, bg=t["bg"])
         btn_box.pack(fill=tk.X)
 
         btn_do_update = tk.Button(
             btn_box, 
             text="⚡ CẬP NHẬT NGAY", 
             font=("Segoe UI", 10, "bold"),
-            bg="#238636", 
-            fg="#ffffff", 
-            activebackground="#2ea043", 
-            activeforeground="#ffffff",
+            bg=t["btn_primary_bg"], 
+            fg=t["btn_primary_fg"], 
             relief=tk.FLAT, 
             padx=18, 
             pady=7, 
             cursor="hand2"
         )
         btn_do_update.pack(side=tk.LEFT)
-        make_hover_button(btn_do_update, "#238636", "#2ea043")
+        make_hover_button(btn_do_update, t["btn_primary_bg"], t["btn_primary_hover"], t["btn_primary_fg"], t["btn_primary_fg"])
 
         btn_web = tk.Button(
             btn_box, 
             text="🌐 Xem trên GitHub", 
             font=("Segoe UI", 9),
-            bg="#21262d", 
-            fg="#c9d1d9", 
-            activebackground="#30363d", 
-            activeforeground="#ffffff",
+            bg=t["btn_secondary_bg"], 
+            fg=t["btn_secondary_fg"], 
             relief=tk.FLAT, 
             padx=12, 
             pady=7, 
-            cursor="hand2",
+            cursor="hand2", 
             command=lambda: webbrowser.open(html_url)
         )
         btn_web.pack(side=tk.LEFT, padx=(8, 0))
-        make_hover_button(btn_web, "#21262d", "#30363d")
+        make_hover_button(btn_web, t["btn_secondary_bg"], t["btn_secondary_hover"], t["btn_secondary_fg"], t["fg"])
 
         btn_close = tk.Button(
             btn_box, 
             text="✕ Để sau", 
-            font=("Segoe UI", 9),
-            bg="#21262d", 
-            fg="#8b949e", 
-            activebackground="#30363d", 
-            activeforeground="#ffffff",
+            font=("Segoe UI", 9), 
+            bg=t["btn_secondary_bg"], 
+            fg=t["fg_muted"], 
             relief=tk.FLAT, 
             padx=12, 
             pady=7, 
-            cursor="hand2",
+            cursor="hand2", 
             command=dlg.destroy
         )
         btn_close.pack(side=tk.RIGHT)
-        make_hover_button(btn_close, "#21262d", "#30363d")
+        make_hover_button(btn_close, t["btn_secondary_bg"], t["btn_secondary_hover"], t["fg_muted"], t["fg"])
 
         btn_do_update.config(command=lambda: self._execute_download_and_install(
             tag_name, assets, dlg, btn_do_update, btn_close, lbl_dl_status, prog_dl, html_url
         ))
+
 
         # Canh giữa cửa sổ theo ứng dụng chính
         dlg.update_idletasks()
@@ -1528,8 +1917,9 @@ echo [OK] Nang cap thanh cong! Dang khoi dong lai tool...
 set _MEIPASS2=
 set _MEIPASS=
 set PYI_PARENT_PID=
+set PYI_CHILD_PID=
 timeout /t 1 /nobreak >nul
-start "" "{curr_exe}"
+powershell -NoProfile -WindowStyle Hidden -Command "Start-Process -FilePath '{curr_exe}'"
 timeout /t 2 /nobreak >nul
 del "%~f0"
 exit

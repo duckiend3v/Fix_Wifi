@@ -18,6 +18,8 @@ dist/
 update_temp_*
 apply_update.bat
 *.bak
+theme_config.json
+updater_config.json
 
 # Admin & Developer local tools (giu tren may tinh cua ban, khong day len GitHub)
 push_len_github.bat
