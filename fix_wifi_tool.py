@@ -31,7 +31,7 @@ except Exception as e:
     sys.exit(1)
 
 
-APP_VERSION = "v1.2.4"
+APP_VERSION = "v1.2.4b"
 DEFAULT_GITHUB_REPO = "duckiend3v/Fix_Wifi"
 
 
@@ -1914,12 +1914,17 @@ if exist "{temp_file}" (
 )
 
 echo [OK] Nang cap thanh cong! Dang khoi dong lai tool...
+set PYINSTALLER_RESET_ENVIRONMENT=1
 set _MEIPASS2=
 set _MEIPASS=
+set _PYI_ARCHIVE_FILE=
+set _PYI_APPLICATION_HOME_DIR=
+set _PYI_PARENT_PID=
+set _PYI_CHILD_PID=
 set PYI_PARENT_PID=
 set PYI_CHILD_PID=
 timeout /t 1 /nobreak >nul
-powershell -NoProfile -WindowStyle Hidden -Command "Start-Process -FilePath '{curr_exe}'"
+powershell -NoProfile -WindowStyle Hidden -Command "$env:PYINSTALLER_RESET_ENVIRONMENT='1'; Start-Process -FilePath '{curr_exe}'"
 timeout /t 2 /nobreak >nul
 del "%~f0"
 exit
@@ -1927,7 +1932,8 @@ exit
                 with open(bat_path, "w", encoding="utf-8") as bf:
                     bf.write(bat_content)
 
-                clean_env = {k: v for k, v in os.environ.items() if not k.startswith("_MEI") and not k.startswith("PYI_")}
+                clean_env = {k: v for k, v in os.environ.items() if not k.startswith("_MEI") and not k.startswith("_PYI") and not k.startswith("PYI_")}
+                clean_env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
 
                 subprocess.Popen(
                     ["cmd.exe", "/c", bat_path], 
